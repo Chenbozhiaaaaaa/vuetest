@@ -16,8 +16,9 @@
         class="menu-item"
         :is="(item.children&&item.children.length>0)?'el-submenu':'el-menu-item'"
         :index="item.url"
+        @click="addtab(item.title,item.url)"
       >
-        <template slot="title">
+        <template slot="title" >
           <i :class="[item.icon]"></i>
           <span>{{item.title}}</span>
         </template>
@@ -47,7 +48,7 @@ export default {
           {
             icon: "el-icon-document",
             title: "订单管理",
-            url: "/OrderManage"
+            url: "/a"
           },
           {
             icon: "el-icon-dish",
@@ -99,6 +100,11 @@ export default {
   methods: {
     adda(index, title) {
       this.$emit("adda", { index, title });
+      console.log(1); 
+    },
+    addtab(title,url){
+      this.$emit("addtab",{title,url});
+
     }
   }
 };

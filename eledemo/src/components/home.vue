@@ -1,7 +1,7 @@
 <template>
   <el-container style="height:100%">
     <el-aside :width="colwidth">
-      <Slider :isCollapse="isCollapse" @adda='adda($event)'/>
+      <Slider :isCollapse="isCollapse" @adda='adda($event)' @addtab='addtab($event)'/>
     </el-aside>
     <el-main style="padding:1px">
       <div class="main-head">
@@ -42,7 +42,7 @@
 export default {
   data() {
     return {
-      isCollapse: true,
+      isCollapse: false,
       editableTabsValue: "2",
       editableTabs: [
         {
@@ -67,6 +67,10 @@ export default {
     },
     adda($event){
       console.log($event);
+      
+    },
+    addtab($event){
+       console.log($event);
       
     },
     removeTab(targetName) {
