@@ -5,11 +5,6 @@ import Home from '@/components/home'
 
 import A from '@/components/a'
 
-
-const originalPush = Router.prototype.push
-Router.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err)
-}
 Vue.use(Router)
 
 export default new Router({
@@ -17,21 +12,19 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
-      redirect:'/home'
+      component: Home
     },
     {
       path: '/home',
       name: 'home',
-      component: Home, children: [
+      component: Home,children:[
         {
-          path: '/a',
-          name: 'A',
-          component: A
+            path: '/a',
+      name: 'A',
+      component: A
         }
       ]
     },
-
+   
   ]
 })
-

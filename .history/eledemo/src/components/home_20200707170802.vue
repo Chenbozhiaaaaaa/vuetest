@@ -48,9 +48,13 @@ export default {
         {
           title: "Tab 1",
           name: "1",
-        
+          content: "Tab 1 content"
         },
-      
+        {
+          title: "Tab 2",
+          name: "2",
+        
+        }
       ]
     };
   },

@@ -1,7 +1,7 @@
 <template>
   <el-container style="height:100%">
     <el-aside :width="colwidth">
-      <Slider :isCollapse="isCollapse" @adda='adda($event)'/>
+      <Slider :isCollapse="isCollapse" @changetype='changetype'/>
     </el-aside>
     <el-main style="padding:1px">
       <div class="main-head">
@@ -48,9 +48,13 @@ export default {
         {
           title: "Tab 1",
           name: "1",
-        
+          content: "Tab 1 content"
         },
-      
+        {
+          title: "Tab 2",
+          name: "2",
+          content: "Tab 2 content"
+        }
       ]
     };
   },
@@ -65,10 +69,10 @@ export default {
       this.isCollapse = !this.isCollapse;
       console.log(this.isCollapse);
     },
-    adda($event){
-      console.log($event);
+    changetype(){
+      console.log(1);
       
-    },
+    }
     removeTab(targetName) {
       let tabs = this.editableTabs;
       let activeName = this.editableTabsValue;

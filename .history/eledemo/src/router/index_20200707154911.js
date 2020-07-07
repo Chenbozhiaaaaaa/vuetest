@@ -5,11 +5,6 @@ import Home from '@/components/home'
 
 import A from '@/components/a'
 
-
-const originalPush = Router.prototype.push
-Router.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err)
-}
 Vue.use(Router)
 
 export default new Router({
@@ -34,4 +29,3 @@ export default new Router({
 
   ]
 })
-

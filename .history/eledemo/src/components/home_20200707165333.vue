@@ -48,9 +48,13 @@ export default {
         {
           title: "Tab 1",
           name: "1",
-        
+          content: "Tab 1 content"
         },
-      
+        {
+          title: "Tab 2",
+          name: "2",
+          content: "Tab 2 content"
+        }
       ]
     };
   },
@@ -65,8 +69,8 @@ export default {
       this.isCollapse = !this.isCollapse;
       console.log(this.isCollapse);
     },
-    adda($event){
-      console.log($event);
+    changetype(){
+      console.log(1);
       
     },
     removeTab(targetName) {

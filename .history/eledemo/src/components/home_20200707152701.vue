@@ -1,7 +1,7 @@
 <template>
   <el-container style="height:100%">
     <el-aside :width="colwidth">
-      <Slider :isCollapse="isCollapse" @adda='adda($event)'/>
+      <Slider :isCollapse="isCollapse" />
     </el-aside>
     <el-main style="padding:1px">
       <div class="main-head">
@@ -21,16 +21,7 @@
           </el-col>
         </el-row>
       </div>
-      <div class="main-nav">
-        <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab">
-          <el-tab-pane
-            v-for="(item, index) in editableTabs"
-            :key="item.name"
-            :label="item.title"
-            :name="item.name"
-          >{{item.content}}</el-tab-pane>
-        </el-tabs>
-      </div>
+      <div class="main-nav"></div>
       <div class="main-view">
         <router-view />
       </div>
@@ -42,16 +33,7 @@
 export default {
   data() {
     return {
-      isCollapse: true,
-      editableTabsValue: "2",
-      editableTabs: [
-        {
-          title: "Tab 1",
-          name: "1",
-        
-        },
-      
-      ]
+      isCollapse: true
     };
   },
   methods: {
@@ -64,27 +46,6 @@ export default {
     checktrue() {
       this.isCollapse = !this.isCollapse;
       console.log(this.isCollapse);
-    },
-    adda($event){
-      console.log($event);
-      
-    },
-    removeTab(targetName) {
-      let tabs = this.editableTabs;
-      let activeName = this.editableTabsValue;
-      if (activeName === targetName) {
-        tabs.forEach((tab, index) => {
-          if (tab.name === targetName) {
-            let nextTab = tabs[index + 1] || tabs[index - 1];
-            if (nextTab) {
-              activeName = nextTab.name;
-            }
-          }
-        });
-      }
-
-      this.editableTabsValue = activeName;
-      this.editableTabs = tabs.filter(tab => tab.name !== targetName);
     }
   },
   computed: {

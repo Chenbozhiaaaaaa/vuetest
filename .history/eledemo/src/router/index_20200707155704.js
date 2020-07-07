@@ -6,11 +6,6 @@ import Home from '@/components/home'
 import A from '@/components/a'
 
 
-const originalPush = Router.prototype.push
-Router.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err)
-}
-Vue.use(Router)
 
 export default new Router({
   routes: [
@@ -34,4 +29,7 @@ export default new Router({
 
   ]
 })
-
+const originalReplace = VueRouter.prototype.replace;
+VueRouter.prototype.replace = function replace(location) {
+    return originalReplace.call(this, location).catch(err => err);
+};
