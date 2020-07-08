@@ -16,7 +16,7 @@
         class="menu-item"
         :is="(item.children&&item.children.length>0)?'el-submenu':'el-menu-item'"
         :index="item.url"
-        @click="addtab(item.title,item.url,item)"
+        @click="addtab(item.title,item.url)"
       >
         <template slot="title" >
           <i :class="[item.icon]"></i>
@@ -107,8 +107,8 @@ export default {
     //   this.$emit("adda", { index, title });
     //   console.log(1); 
     // },
-    addtab(title,url,item){
-      this.$emit("addtab",{title,url,item});
+    addtab(title,url){
+      this.$emit("addtab",{title,url});
 
     }
   }

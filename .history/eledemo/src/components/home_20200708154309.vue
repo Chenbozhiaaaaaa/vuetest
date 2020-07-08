@@ -18,9 +18,17 @@
           </el-col>
           <el-col :span="8">
             <div class="grid-content">
-              <el-breadcrumb separator="/" style="line-height: inherit;">
-                <el-breadcrumb-item v-for="item in levelList" :key="item.path">{{item.name}}</el-breadcrumb-item>
+              <div>
+                    <el-breadcrumb separator="/">
+                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                <el-breadcrumb-item>
+                  <a href="/">活动管理</a>
+                </el-breadcrumb-item>
+                <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+                <el-breadcrumb-item>活动详情</el-breadcrumb-item>
               </el-breadcrumb>
+              </div>
+          
             </div>
           </el-col>
         </el-row>
@@ -53,7 +61,6 @@
 export default {
   data() {
     return {
-      levelList: null,
       isCollapse: false,
       editableTabsValue: "2",
       editableTabs: [
@@ -64,20 +71,7 @@ export default {
       ]
     };
   },
-  watch: {
-    $route() {
-      this.getBreadcrumb();
-    }
-  },
-
   methods: {
-    getBreadcrumb() {
-      //$route.matched一个数组 包含当前路由的所有嵌套路径片段的路由记录
-      let matched = this.$route.matched.filter(item => item.name);
-      this.levelList = matched;
-      console.log(this.levelList);
-    },
-
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
@@ -94,8 +88,6 @@ export default {
     addtab($event) {
       // 做一个重复性判定
       let rundata = JSON.parse(JSON.stringify(this.editableTabs));
-      console.log($event);
-
       var flag;
       rundata.map(item => {
         if (item.name == $event.url) {

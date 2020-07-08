@@ -19,7 +19,7 @@
           <el-col :span="8">
             <div class="grid-content">
               <el-breadcrumb separator="/" style="line-height: inherit;">
-                <el-breadcrumb-item v-for="item in levelList" :key="item.path">{{item.name}}</el-breadcrumb-item>
+                <el-breadcrumb-item v-for="item in levelList" :key="item.name">{{item.title}}</el-breadcrumb-item>
               </el-breadcrumb>
             </div>
           </el-col>

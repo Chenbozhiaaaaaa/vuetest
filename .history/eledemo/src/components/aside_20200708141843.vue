@@ -16,7 +16,7 @@
         class="menu-item"
         :is="(item.children&&item.children.length>0)?'el-submenu':'el-menu-item'"
         :index="item.url"
-        @click="addtab(item.title,item.url,item)"
+        @click="addtab(item.title,item.url)"
       >
         <template slot="title" >
           <i :class="[item.icon]"></i>
@@ -58,7 +58,7 @@ export default {
           {
             icon: "el-icon-dish",
             title: "菜单管理",
-            url: "/b"
+            url: "/ProductManage"
           },
           {
             icon: "el-icon-suitcase",
@@ -103,12 +103,12 @@ export default {
     }
   },
   methods: {
-    // adda(index, title) {
-    //   this.$emit("adda", { index, title });
-    //   console.log(1); 
-    // },
-    addtab(title,url,item){
-      this.$emit("addtab",{title,url,item});
+    adda(index, title) {
+      this.$emit("adda", { index, title });
+      console.log(1); 
+    },
+    addtab(title,url){
+      this.$emit("addtab",{title,url});
 
     }
   }

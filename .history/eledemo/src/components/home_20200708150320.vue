@@ -1,7 +1,7 @@
 <template>
   <el-container style="height:100%">
     <el-aside :width="colwidth">
-      <Slider :isCollapse="isCollapse" @adda="adda($event)" @addtab="addtab($event)" />
+      <Slider :isCollapse="isCollapse" @adda='adda($event)' @addtab='addtab($event)'/>
     </el-aside>
     <el-main style="padding:1px">
       <div class="main-head">
@@ -17,23 +17,12 @@
             </div>
           </el-col>
           <el-col :span="8">
-            <div class="grid-content">
-              <el-breadcrumb separator="/" style="line-height: inherit;">
-                <el-breadcrumb-item v-for="item in levelList" :key="item.path">{{item.name}}</el-breadcrumb-item>
-              </el-breadcrumb>
-            </div>
+            <div class="grid-content"></div>
           </el-col>
         </el-row>
       </div>
       <div class="main-nav">
-        <el-tabs
-          class="eltabsdiv"
-          @tab-click="toggtab"
-          v-model="editableTabsValue"
-          type="card"
-          closable
-          @tab-remove="removeTab"
-        >
+        <el-tabs class="eltabsdiv" @tab-click='toggtab' v-model="editableTabsValue" type="card" closable @tab-remove="removeTab">
           <el-tab-pane
             v-for="(item, index) in editableTabs"
             :key="item.name"
@@ -53,31 +42,18 @@
 export default {
   data() {
     return {
-      levelList: null,
       isCollapse: false,
       editableTabsValue: "2",
       editableTabs: [
         {
           title: "首页",
-          name: "/home"
-        }
+          name: "/home",
+        },
+      
       ]
     };
   },
-  watch: {
-    $route() {
-      this.getBreadcrumb();
-    }
-  },
-
   methods: {
-    getBreadcrumb() {
-      //$route.matched一个数组 包含当前路由的所有嵌套路径片段的路由记录
-      let matched = this.$route.matched.filter(item => item.name);
-      this.levelList = matched;
-      console.log(this.levelList);
-    },
-
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
@@ -88,32 +64,32 @@ export default {
       this.isCollapse = !this.isCollapse;
       console.log(this.isCollapse);
     },
-    adda($event) {
+    adda($event){
       console.log($event);
+      
     },
-    addtab($event) {
+    addtab($event){
       // 做一个重复性判定
-      let rundata = JSON.parse(JSON.stringify(this.editableTabs));
-      console.log($event);
-
-      var flag;
-      rundata.map(item => {
-        if (item.name == $event.url) {
-          return (flag = 1);
+      let rundata = JSON.parse(JSON.stringify(this.editableTabs))
+      var flag
+      rundata.map(item=>{
+        if(item.name == $event.url){
+          return flag = 1
         }
-      });
-      if (flag == 1) {
-        return;
+        
+      })
+      if(flag == 1){
+        return
       }
-      console.log($event);
-      let obj = {};
-      obj.title = $event.title;
-      obj.name = $event.url;
-      this.editableTabs.push(obj);
+       console.log($event);
+       let obj ={}
+       obj.title = $event.title
+       obj.name = $event.url
+      this.editableTabs.push(obj)
     },
-    toggtab(item) {
+    toggtab(item){
       console.log(item);
-      this.$router.push(item.name);
+      this.$router.push('item.name')
     },
     removeTab(targetName) {
       let tabs = this.editableTabs;
@@ -156,4 +132,5 @@ export default {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
+
 </style>

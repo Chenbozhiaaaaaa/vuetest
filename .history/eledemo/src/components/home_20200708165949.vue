@@ -53,7 +53,6 @@
 export default {
   data() {
     return {
-      levelList: null,
       isCollapse: false,
       editableTabsValue: "2",
       editableTabs: [

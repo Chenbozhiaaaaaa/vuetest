@@ -107,8 +107,8 @@ export default {
     //   this.$emit("adda", { index, title });
     //   console.log(1); 
     // },
-    addtab(title,url,item){
-      this.$emit("addtab",{title,url,item});
+    addtab(title,url){
+      this.$emit("addtab",{title,url});
 
     }
   }

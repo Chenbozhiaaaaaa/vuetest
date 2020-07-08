@@ -53,7 +53,7 @@ export default {
           {
             icon: "el-icon-document",
             title: "订单管理",
-            url: "/a"
+            url: "/home/a"
           },
           {
             icon: "el-icon-dish",
