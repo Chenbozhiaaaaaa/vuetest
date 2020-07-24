@@ -40,12 +40,15 @@
                 <el-menu
                   @select="handleSelect"
                   class="el-menu-vertical-demo el-menu-bor"
-                  router              
+                  router
+                 
                 >
-                  <el-menu-item index="/home" class="el-munu-diy">                
+                  <el-menu-item index="/home" class="el-munu-diy">
+                
                     <span>Home</span>
                   </el-menu-item>
                   <el-menu-item index="2"  class="el-munu-diy">
+                  
                     <span slot="title">github地址</span>
                   </el-menu-item>
                   <el-menu-item index="3"  class="el-munu-diy">     

@@ -11,8 +11,7 @@ export const store = new Vuex.Store({
   state: {
     count: 0,
     token: getToken(),
-    oldtime:'',
-    ismenu:false
+    oldtime:''
   },
   mutations: {
     increment(state, num = 1) {
@@ -29,8 +28,6 @@ export const store = new Vuex.Store({
         removeToken()
       }
     },
-    changeMenu(state){
-      state.ismenu = !state.ismenu
-    }
+
   }
 })

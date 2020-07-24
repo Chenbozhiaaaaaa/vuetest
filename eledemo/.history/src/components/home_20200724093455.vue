@@ -35,23 +35,27 @@
               <div style="height:15px;line-height:15px;text-align:left">
                 <span>admin</span>
               </div>
-              <div class="triangle" @click="()=>this.$store.commit('changeMenu')"></div>
-              <div class="dialog"  v-if="this.$store.state.ismenu">
+              <div class="triangle"></div>
+              <div class="dialog">
                 <el-menu
-                  @select="handleSelect"
-                  class="el-menu-vertical-demo el-menu-bor"
-                  router              
+                  default-active="2"
+                  class="el-menu-vertical-demo"
+                  @open="handleOpen"
+                  @close="handleClose"
                 >
-                  <el-menu-item index="/home" class="el-munu-diy">                
-                    <span>Home</span>
+                  <el-menu-item index="1" style="height:28px">
+                    <i class="el-icon-location"></i>
+                    <span>导航一</span>
                   </el-menu-item>
-                  <el-menu-item index="2"  class="el-munu-diy">
-                    <span slot="title">github地址</span>
+                  <el-menu-item index="2">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">导航二</span>
                   </el-menu-item>
-                  <el-menu-item index="3"  class="el-munu-diy">     
-                    <span slot="title">退出</span>
+                  <el-menu-item index="3">
+                    <i class="el-icon-document"></i>
+                    <span slot="title">导航三</span>
                   </el-menu-item>
-                </el-menu>  
+                </el-menu>
               </div>
             </div>
           </el-col>
@@ -82,7 +86,6 @@
 </template>
 
 <script>
-import { getToken, setToken, removeToken } from '@/utils/auth'
 export default {
   data() {
     return {
@@ -108,13 +111,27 @@ export default {
       //$route.matched一个数组 包含当前路由的所有嵌套路径片段的路由记录
       let matched = this.$route.matched.filter((item) => item.name);
       this.levelList = matched;
+      console.log(this.levelList);
+    },
+
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
     },
     checktrue() {
       this.isCollapse = !this.isCollapse;
+      console.log(this.isCollapse);
+    },
+    adda($event) {
+      console.log($event);
     },
     addtab($event) {
       // 做一个重复性判定
       let rundata = JSON.parse(JSON.stringify(this.editableTabs));
+      console.log($event);
+
       var flag;
       rundata.map((item) => {
         if (item.name == $event.url) {
@@ -124,12 +141,14 @@ export default {
       if (flag == 1) {
         return;
       }
+      console.log($event);
       let obj = {};
       obj.title = $event.title;
       obj.name = $event.url;
       this.editableTabs.push(obj);
     },
     toggtab(item) {
+      console.log(item);
       this.$router.push(item.name);
     },
     removeTab(targetName) {
@@ -145,20 +164,10 @@ export default {
           }
         });
       }
+
       this.editableTabsValue = activeName;
       this.editableTabs = tabs.filter((tab) => tab.name !== targetName);
     },
-      handleSelect(key, keyPath) {
-    
-        if(key=='2'){
-          window.location.href="https://github.com/Chenbozhiaaaaaa/vuetest/tree/master/eledemo"
-        }
-       else if(key=='3'){
-          removeToken()
-          this.$router.push('/login')
-        }   
-         this.$store.commit('changeMenu')
-      }
   },
   computed: {
     colwidth() {
@@ -199,15 +208,4 @@ export default {
   border: 8px solid;
   border-color: lightgreen transparent transparent transparent;
 }
-.el-munu-diy{
-height:36px;
-line-height:36px
-}
-.el-menu-bor{
-  border: 1px solid #ebeef5;
-    border-radius: 4px;
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
-    z-index: 100;
-}
-
 </style>

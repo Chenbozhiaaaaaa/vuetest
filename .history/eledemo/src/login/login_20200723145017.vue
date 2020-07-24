@@ -34,10 +34,12 @@ export default {
     submitForm() {
       if(this.ruleForm.name=='admin'&&this.ruleForm.pass=='111111'){
         setToken(this.ruleForm)
+       
+       
         this.$store.commit('getoldtime')
         this.$router.push('/home')      
       }else{
-      this.$message.error('告诉你了都，还错！！！')  
+      this.$message.error('告诉你，还错！！！')  
       }
    
       

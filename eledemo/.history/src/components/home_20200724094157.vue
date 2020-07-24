@@ -35,23 +35,25 @@
               <div style="height:15px;line-height:15px;text-align:left">
                 <span>admin</span>
               </div>
-              <div class="triangle" @click="()=>this.$store.commit('changeMenu')"></div>
-              <div class="dialog"  v-if="this.$store.state.ismenu">
+              <div class="triangle"></div>
+              <div class="dialog">
                 <el-menu
-                  @select="handleSelect"
                   class="el-menu-vertical-demo el-menu-bor"
-                  router              
+                  
                 >
-                  <el-menu-item index="/home" class="el-munu-diy">                
-                    <span>Home</span>
+                  <el-menu-item index="1" class="el-munu-diy">
+                    <i class="el-icon-location"></i>
+                    <span>导航一</span>
                   </el-menu-item>
                   <el-menu-item index="2"  class="el-munu-diy">
-                    <span slot="title">github地址</span>
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">导航二</span>
                   </el-menu-item>
-                  <el-menu-item index="3"  class="el-munu-diy">     
+                  <el-menu-item index="3"  class="el-munu-diy">
+                    <i class="el-icon-document"></i>
                     <span slot="title">退出</span>
                   </el-menu-item>
-                </el-menu>  
+                </el-menu>
               </div>
             </div>
           </el-col>
@@ -82,7 +84,6 @@
 </template>
 
 <script>
-import { getToken, setToken, removeToken } from '@/utils/auth'
 export default {
   data() {
     return {
@@ -148,17 +149,6 @@ export default {
       this.editableTabsValue = activeName;
       this.editableTabs = tabs.filter((tab) => tab.name !== targetName);
     },
-      handleSelect(key, keyPath) {
-    
-        if(key=='2'){
-          window.location.href="https://github.com/Chenbozhiaaaaaa/vuetest/tree/master/eledemo"
-        }
-       else if(key=='3'){
-          removeToken()
-          this.$router.push('/login')
-        }   
-         this.$store.commit('changeMenu')
-      }
   },
   computed: {
     colwidth() {

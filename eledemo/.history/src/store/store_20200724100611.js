@@ -29,8 +29,6 @@ export const store = new Vuex.Store({
         removeToken()
       }
     },
-    changeMenu(state){
-      state.ismenu = !state.ismenu
-    }
+
   }
 })

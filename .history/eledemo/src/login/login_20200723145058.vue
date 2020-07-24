@@ -34,6 +34,8 @@ export default {
     submitForm() {
       if(this.ruleForm.name=='admin'&&this.ruleForm.pass=='111111'){
         setToken(this.ruleForm)
+       
+       
         this.$store.commit('getoldtime')
         this.$router.push('/home')      
       }else{

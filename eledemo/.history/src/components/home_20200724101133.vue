@@ -36,16 +36,19 @@
                 <span>admin</span>
               </div>
               <div class="triangle" @click="()=>this.$store.commit('changeMenu')"></div>
-              <div class="dialog"  v-if="this.$store.state.ismenu">
+              <div class="dialog">
                 <el-menu
                   @select="handleSelect"
                   class="el-menu-vertical-demo el-menu-bor"
-                  router              
+                  router
+                  v-if="this.$store.state.ismenu"
                 >
-                  <el-menu-item index="/home" class="el-munu-diy">                
+                  <el-menu-item index="/home" class="el-munu-diy">
+                
                     <span>Home</span>
                   </el-menu-item>
                   <el-menu-item index="2"  class="el-munu-diy">
+                  
                     <span slot="title">github地址</span>
                   </el-menu-item>
                   <el-menu-item index="3"  class="el-munu-diy">     
