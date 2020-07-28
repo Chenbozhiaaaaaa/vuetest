@@ -46,14 +46,15 @@ export default {
               //这里因为我默认账号名就是当前用户的权限
               //做一个嵌套的判断
               if (dynamicRouter[i].children) {
-                let childrendata = []
-              
+                let childrendata = JSON.parse(
+                  JSON.stringify(dynamicRouter[i].children)
+                );
+                dynamicRouter[i].children = [];
                 for (let z = 0; z < childrendata.length; z++) {
                   for (let y = 0; y < childrendata[z].meta.roles.length; y++) {
                     if (childrendata[z].meta.roles[y] == this.ruleForm.name) {
-                      childrendata.push(childrendata[z])
+                      dynamicRouter[i].children.concat(childrendata[z]);
                     }
-                    dynamicRouter[i].children = childrendata
                   }
                 }
               }

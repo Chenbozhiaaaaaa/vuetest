@@ -40,26 +40,26 @@ export default new Router({
 
 export const dynamicRouter =[ //动态路由
   {
-    path: '/home',
+    path: '/',
     name: 'home',
-    meta: {  
-      roles:['admin','user']  
+    meta: {  //添加meta标签，里面自定义了roles，用来设置权限
+      roles:['admin','user']  //该路由仅admin和user权限访问
     },
     component: (resolve) => require(['../components/home.vue'], resolve), 
     children: [
       {
         path: '/a',
         name: 'A',
-        meta: {  
-          roles:['admin']  
+        meta: {  //添加meta标签，里面自定义了roles，用来设置权限
+          roles:['admin']  //该路由仅admin和user权限访问
         },
         component: (resolve) => require(['../components/a.vue'], resolve)
       },
       {
         path: '/b',
         name: 'B',
-        meta: {  
-          roles:['admin','user']  
+        meta: {  //添加meta标签，里面自定义了roles，用来设置权限
+          roles:['admin','user']  //该路由仅admin和user权限访问
         },
         component: (resolve) => require(['../components/b.vue'], resolve)
       },

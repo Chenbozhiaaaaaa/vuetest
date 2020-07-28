@@ -46,14 +46,14 @@ export default {
               //这里因为我默认账号名就是当前用户的权限
               //做一个嵌套的判断
               if (dynamicRouter[i].children) {
-                let childrendata = []
-              
-                for (let z = 0; z < childrendata.length; z++) {
-                  for (let y = 0; y < childrendata[z].meta.roles.length; y++) {
-                    if (childrendata[z].meta.roles[y] == this.ruleForm.name) {
-                      childrendata.push(childrendata[z])
+                let childrendata = JSON.parse(JSON.stringify(dynamicRouter[i].children))
+                 dynamicRouter[i].children= []
+               for (let z = 0; z < childrendata.length; z++) {
+                  for (let y = 0;y < childrendata[z].meta.roles.length;y++ ) {
+                    if(childrendata[z].meta.roles[y] ==this.ruleForm.name){
+                      dynamicRouter[i].children.concat(childrendata[z])
                     }
-                    dynamicRouter[i].children = childrendata
+
                   }
                 }
               }
@@ -71,7 +71,7 @@ export default {
           ])
         );
         // this.$router.push("/"); //登录验证后跳转到主页"/"
-        console.log("dR", dR);
+      console.log('dR',dR);
         this.$store.commit("getoldtime");
         this.$router.push("/home");
       } else {

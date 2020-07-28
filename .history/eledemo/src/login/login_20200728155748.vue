@@ -32,11 +32,9 @@ export default {
 
   methods: {
     submitForm() {
-      if (
-        (this.ruleForm.name == "admin" || this.ruleForm.name == "user") &&
-        this.ruleForm.pass == "111111"
-      ) {
+      if (this.ruleForm.name == "admin" && this.ruleForm.pass == "111111") {
         setToken(this.ruleForm);
+      console.log(dynamicRouter);
         let dR = new Array(); //创建一个数组用来存储符合权限的路由
         for (let i = 0; i < dynamicRouter.length; i++) {
           //第一层循环遍历动态路由表的每一个路由
@@ -44,23 +42,11 @@ export default {
             //第二次循环遍历每一个路由里的roles设置的权限并和当前登录账号的权限比较
             if (dynamicRouter[i].meta.roles[j] == this.ruleForm.name) {
               //这里因为我默认账号名就是当前用户的权限
-              //做一个嵌套的判断
-              if (dynamicRouter[i].children) {
-                let childrendata = []
-              
-                for (let z = 0; z < childrendata.length; z++) {
-                  for (let y = 0; y < childrendata[z].meta.roles.length; y++) {
-                    if (childrendata[z].meta.roles[y] == this.ruleForm.name) {
-                      childrendata.push(childrendata[z])
-                    }
-                    dynamicRouter[i].children = childrendata
-                  }
-                }
-              }
               dR.push(dynamicRouter[i]); //符合条件的路由信息就放进数组里
             }
           }
         }
+        console.log( 'dr',dR);
         this.$router.addRoutes(
           dR.concat([
             {
@@ -71,8 +57,9 @@ export default {
           ])
         );
         // this.$router.push("/"); //登录验证后跳转到主页"/"
-        console.log("dR", dR);
+
         this.$store.commit("getoldtime");
+        console.log( this.$router);
         this.$router.push("/home");
       } else {
         this.$message.error("告诉你了都，还错！！！");

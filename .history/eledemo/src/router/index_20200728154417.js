@@ -40,7 +40,7 @@ export default new Router({
 
 export const dynamicRouter =[ //动态路由
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     meta: {  
       roles:['admin','user']  

@@ -46,18 +46,16 @@ export default {
               //这里因为我默认账号名就是当前用户的权限
               //做一个嵌套的判断
               if (dynamicRouter[i].children) {
-                let childrendata = []
-              
-                for (let z = 0; z < childrendata.length; z++) {
-                  for (let y = 0; y < childrendata[z].meta.roles.length; y++) {
-                    if (childrendata[z].meta.roles[y] == this.ruleForm.name) {
-                      childrendata.push(childrendata[z])
+                for (let z = 0; z < dynamicRouter[i].children.length; z++) {
+                  for (let j = 0;j < dynamicRouter[i].children[z].meta.roles.length;j++ ) {
+                    console.log(dynamicRouter[i].children[z].meta.roles[j]  );
+                    if (dynamicRouter[i].children[z].meta.roles[j] !==this.ruleForm.name) {
+                      dynamicRouter[i].children.splice(z, 1);
                     }
-                    dynamicRouter[i].children = childrendata
                   }
                 }
               }
-              dR.push(dynamicRouter[i]); //符合条件的路由信息就放进数组里
+                dR.push(dynamicRouter[i]); //符合条件的路由信息就放进数组里
             }
           }
         }
@@ -71,7 +69,7 @@ export default {
           ])
         );
         // this.$router.push("/"); //登录验证后跳转到主页"/"
-        console.log("dR", dR);
+
         this.$store.commit("getoldtime");
         this.$router.push("/home");
       } else {
