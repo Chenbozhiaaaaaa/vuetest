@@ -67,19 +67,20 @@ export default {
             }
           }
         }
-
-        dR.push({
-          path: "*",
-          redirect: "/404",
-          hidden: true,
-          //所有不匹配路径(*)都重定向到404，为什么写在这里而不放到静态路由表里可以百度
-        });
-        this.$router.addRoutes(dR);
-        this.$router.options.routes = this.$router.options.routes.concat(dR);
-
+        this.$router.addRoutes(
+          dR.concat([
+            {
+              //这里调用addRoutes方法，动态添加符合条件的路由
+              path: "*",
+              redirect: "/404", //所有不匹配路径(*)都重定向到404，为什么写在这里而不放到静态路由表里可以查看“前端路上”的文章
+            },
+          ])
+        );
+        console.log("router",this.$router);
+        // this.$router.push("/"); //登录验证后跳转到主页"/"
+        console.log("dR", dR);
         this.$store.commit("getoldtime");
-        this.$store.commit("setnavList", this.$router.options.routes);
-        this.$router.push("/");
+        this.$router.push("/home");
       } else {
         this.$message.error("告诉你了都，还错！！！");
       }

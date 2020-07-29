@@ -12,29 +12,29 @@
       router
       :default-active="$route.path"
     >
-      <component
+    {{navList}}
+      <!-- <component
         class="menu-item"
-        v-if="!item.hidden"
         :is="(item.children&&item.children.length>0)?'el-submenu':'el-menu-item'"
-        :index="item.path"
-        @click="addtab(item.name,item.path,item)"
-      >     
+        :index="item.url"
+        @click="addtab(item.title,item.url,item)"
+      >
         <template slot="title" >
           <i :class="[item.icon]"></i>
-          <span>{{item.name}}</span>
+          <span>{{item.title}}</span>
         </template>
         <template v-if="item.children&&item.children.length>0">
           <el-menu-item
             class="menu-item"
             v-for="(v,i) in item.children"
-            :key="v.path+i"
-            :index="v.path"
+            :key="v.url+i"
+            :index="v.url"
           >
             <i :class="[v.icon]"></i>
-            <span slot="title">{{v.name}}</span>
+            <span slot="title">{{v.title}}</span>
           </el-menu-item>
         </template>
-      </component>
+      </component> -->
     </el-menu>
   </div>
 </template>
@@ -52,19 +52,20 @@ export default {
   name: "Slider",
   props: {
     isCollapse: {
-      type: Boolean,
+      type: Boolean
     },
-    navList: {
-      type: Array,
-    },
+    navList:{
+      type: Array
+    }
   },
   methods: {
     // adda(index, title) {
     //   this.$emit("adda", { index, title });
-    //   console.log(1);
+    //   console.log(1); 
     // },
-    addtab(title, url, item) {
-      this.$emit("addtab", { title, url, item });
+    addtab(title,url,item){
+      this.$emit("addtab",{title,url,item});
+
     },
     // watchjj(){
     //   console.log(navList);

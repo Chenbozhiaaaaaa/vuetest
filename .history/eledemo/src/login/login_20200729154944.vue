@@ -79,7 +79,7 @@ export default {
 
         this.$store.commit("getoldtime");
         this.$store.commit("setnavList", this.$router.options.routes);
-        this.$router.push("/");
+        this.$router.push("/home");
       } else {
         this.$message.error("告诉你了都，还错！！！");
       }

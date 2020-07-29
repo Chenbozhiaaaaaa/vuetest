@@ -1,7 +1,7 @@
 <template>
   <el-container style="height:100%">
     <el-aside :width="colwidth">
-      <Slider :isCollapse="isCollapse" :navList="this.$store.state.navList" @adda="adda($event)" @addtab="addtab($event)" />
+      <Slider :isCollapse="isCollapse" @adda="adda($event)" @addtab="addtab($event)" />
     </el-aside>
     <el-main style="padding:1px">
       <div class="main-head">
@@ -25,7 +25,6 @@
                   :key="item.path"
                 >{{item.name}}</el-breadcrumb-item>
               </el-breadcrumb>
-              
             </div>
           </el-col>
           <el-col :span="3">
@@ -101,8 +100,10 @@ export default {
   watch: {
     $route() {
       this.getBreadcrumb();
+      console.log(this.$route);
     },
   },
+
   methods: {
     getBreadcrumb() {
       //$route.matched一个数组 包含当前路由的所有嵌套路径片段的路由记录

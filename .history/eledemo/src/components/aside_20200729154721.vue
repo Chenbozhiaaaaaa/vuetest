@@ -16,8 +16,8 @@
         class="menu-item"
         v-if="!item.hidden"
         :is="(item.children&&item.children.length>0)?'el-submenu':'el-menu-item'"
-        :index="item.path"
-        @click="addtab(item.name,item.path,item)"
+     
+        @click="addtab(item.title,item.url,item)"
       >     
         <template slot="title" >
           <i :class="[item.icon]"></i>

@@ -1,8 +1,6 @@
 <!--  -->
 <template>
-  <div>
-      1258555555555 
-  </div>
+  <div></div>
 </template>
 
 <script>
@@ -12,6 +10,11 @@ export default {
     };
   },
 
+  components: {},
+
+  computed: {},
+
+  mounted: {},
 
   methods: {}
 }

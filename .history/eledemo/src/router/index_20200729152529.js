@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/home'
-import Text from '@/components/text'
 
 
 import A from '@/components/a'
@@ -38,20 +37,6 @@ export default new Router({
       hidden: true
 
     },
-    {
-      path: '/',
-      component:Home,
-      name: 'Home',
-      hidden: true
-    },
-    {
-      path: '/text',
-      name: 'Text',
-
-      // component: (resolve) => require(['../components/text.vue'], resolve),
-      component:Text,
-
-    },
     // {
     //   path: "*",
     //   component: NotFind
@@ -64,12 +49,12 @@ export const dynamicRouter =[ //动态路由
   {
     icon: "el-icon-document",
     title: "首页",
-    path: '/s',
-    name: 's',
+    path: '/home',
+    name: 'home',
     meta: {  
       roles:['admin','user']  
     },
-    component: (resolve) => require(['../components/s.vue'], resolve), 
+    component: (resolve) => require(['../components/home.vue'], resolve), 
     children: [
       {
         icon: "el-icon-document",

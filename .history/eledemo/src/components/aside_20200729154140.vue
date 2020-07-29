@@ -14,12 +14,12 @@
     >
       <component
         class="menu-item"
-        v-if="!item.hidden"
         :is="(item.children&&item.children.length>0)?'el-submenu':'el-menu-item'"
-        :index="item.path"
-        @click="addtab(item.name,item.path,item)"
-      >     
-        <template slot="title" >
+        :index="item.url"
+        @click="addtab(item.title,item.url,item)"
+      >
+        if(!item.hidden){
+        <template slot="title">
           <i :class="[item.icon]"></i>
           <span>{{item.name}}</span>
         </template>
@@ -34,6 +34,8 @@
             <span slot="title">{{v.name}}</span>
           </el-menu-item>
         </template>
+
+        }
       </component>
     </el-menu>
   </div>

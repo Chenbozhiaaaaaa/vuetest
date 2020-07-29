@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/home'
-import Text from '@/components/text'
 
 
 import A from '@/components/a'
@@ -45,12 +44,9 @@ export default new Router({
       hidden: true
     },
     {
-      path: '/text',
+      path: '/',
       name: 'Text',
-
-      // component: (resolve) => require(['../components/text.vue'], resolve),
-      component:Text,
-
+      component: (resolve) => require(['../components/text.vue'], resolve), 
     },
     // {
     //   path: "*",

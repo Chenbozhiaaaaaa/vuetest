@@ -49,7 +49,7 @@ export default new Router({
       name: 'Text',
 
       // component: (resolve) => require(['../components/text.vue'], resolve),
-      component:Text,
+      component:Home,
 
     },
     // {

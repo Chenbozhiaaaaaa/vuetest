@@ -1,7 +1,7 @@
 <!--  -->
 <template>
   <div>
-      1258555555555 
+      121212
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
     };
   },
 
+  components: {},
+
+  computed: {},
+
+  mounted: {},
 
   methods: {}
 }

@@ -46,8 +46,7 @@ export default new Router({
     },
     {
       path: '/text',
-      name: 'Text',
-
+      name: 'Home',
       // component: (resolve) => require(['../components/text.vue'], resolve),
       component:Text,
 

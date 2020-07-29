@@ -22,8 +22,9 @@ export const store = new Vuex.Store({
     getoldtime(state){
       state.oldtime = new Date().getTime()
     },
-    setnavList(state,n){
-      state.navList = n
+    setnavList(state){
+      state.navList = this.$router.options.routes
+      console.log( state.navList);
     },
     // 时间戳设置token过期时间
     romeroken(state) {

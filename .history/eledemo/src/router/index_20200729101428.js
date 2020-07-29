@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/home'
-import Text from '@/components/text'
 
 
 import A from '@/components/a'
@@ -28,29 +27,12 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: Login,
-      hidden: true
+      component: Login
     },
     {
       path: '/404',
       name: '404',
-      component: NotFind,
-      hidden: true
-
-    },
-    {
-      path: '/',
-      component:Home,
-      name: 'Home',
-      hidden: true
-    },
-    {
-      path: '/text',
-      name: 'Text',
-
-      // component: (resolve) => require(['../components/text.vue'], resolve),
-      component:Text,
-
+      component: NotFind
     },
     // {
     //   path: "*",
@@ -59,21 +41,17 @@ export default new Router({
 
   ]
 })
-// 模拟后台来的数据
+
 export const dynamicRouter =[ //动态路由
   {
-    icon: "el-icon-document",
-    title: "首页",
-    path: '/s',
-    name: 's',
+    path: '/home',
+    name: 'home',
     meta: {  
       roles:['admin','user']  
     },
-    component: (resolve) => require(['../components/s.vue'], resolve), 
+    component: (resolve) => require(['../components/home.vue'], resolve), 
     children: [
       {
-        icon: "el-icon-document",
-        title: "订单管理",
         path: '/a',
         name: 'A',
         meta: {  
@@ -84,8 +62,6 @@ export const dynamicRouter =[ //动态路由
       {
         path: '/b',
         name: 'B',
-        icon: "el-icon-dish",
-        title: "菜单管理",
         meta: {  
           roles:['admin','user']  
         },
@@ -93,5 +69,20 @@ export const dynamicRouter =[ //动态路由
       },
     ]
   },
-
+  // {
+  //   path: '/home',
+  //   name: 'home',
+  //   component: Home, children: [
+  //     {
+  //       path: '/a',
+  //       name: 'A',
+  //       component: A
+  //     },
+  //     {
+  //       path: '/b',
+  //       name: 'B',
+  //       component: B
+  //     },
+  //   ]
+  // },
 ]

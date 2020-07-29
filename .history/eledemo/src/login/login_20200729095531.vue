@@ -4,7 +4,7 @@
     <div class="login-div">
       <el-form :model="ruleForm" status-icon label-width="100px" class="demo-ruleForm">
         <el-form-item label="用户名" prop="pass">
-          <el-input v-model="ruleForm.name" autocomplete="off" placeholder="admin或user"></el-input>
+          <el-input v-model="ruleForm.name" autocomplete="off" placeholder="admin"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pass">
           <el-input type="password" v-model="ruleForm.pass" autocomplete="off" placeholder="111111"></el-input>
@@ -46,40 +46,33 @@ export default {
             if (dynamicRouter[i].meta.roles[j] == this.ruleForm.name) {
               //这里因为我默认账号名就是当前用户的权限
               //做一个嵌套的判断
-              if (dynamicRouter[i].children) {
+              if (dynamicRouter[i].children) {     
                 for (let z = 0; z < dynamicRouter[i].children.length; z++) {
-                  for (
-                    let y = 0;
-                    y < dynamicRouter[i].children[z].meta.roles.length;
-                    y++
-                  ) {
-                    if (
-                      dynamicRouter[i].children[z].meta.roles[y] ==
-                      this.ruleForm.name
-                    ) {
-                      dRchild.push(dynamicRouter[i].children[z]);
-                    }
+                  for (let y = 0; y < dynamicRouter[i].children[z].meta.roles.length; y++) {
+                    if (dynamicRouter[i].children[z].meta.roles[y] == this.ruleForm.name) {
+                        dRchild.push(dynamicRouter[i].children[z])
+                    }                  
                   }
-                }
-                dynamicRouter[i].children = dRchild;
+                  
+                }dynamicRouter[i].children = dRchild
               }
               dR.push(dynamicRouter[i]); //符合条件的路由信息就放进数组里
             }
           }
         }
-
-        dR.push({
-          path: "*",
-          redirect: "/404",
-          hidden: true,
-          //所有不匹配路径(*)都重定向到404，为什么写在这里而不放到静态路由表里可以百度
-        });
-        this.$router.addRoutes(dR);
-        this.$router.options.routes = this.$router.options.routes.concat(dR);
-
+        this.$router.addRoutes(
+          dR.concat([
+            {
+              //这里调用addRoutes方法，动态添加符合条件的路由
+              path: "*",
+              redirect: "/404", //所有不匹配路径(*)都重定向到404，为什么写在这里而不放到静态路由表里可以查看“前端路上”的文章
+            },
+          ])
+        );
+        // this.$router.push("/"); //登录验证后跳转到主页"/"
+        console.log("dR", dR);
         this.$store.commit("getoldtime");
-        this.$store.commit("setnavList", this.$router.options.routes);
-        this.$router.push("/");
+        this.$router.push("/home");
       } else {
         this.$message.error("告诉你了都，还错！！！");
       }
