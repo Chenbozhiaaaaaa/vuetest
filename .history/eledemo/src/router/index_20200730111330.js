@@ -40,9 +40,10 @@ export default new Router({
     },
     {
       path: '/',
+  
       redirect: '/home',
+      
     },
-    
     // {
     //   path: '/text',
     //   name: 'Text',
@@ -58,3 +59,51 @@ export default new Router({
 
   ]
 })
+// 模拟后台来的数据
+export const dynamicRouter =[ //动态路由
+  {  
+    path: '/home',
+    icon: "el-icon-document",
+    title: "首页",
+    name: 'Home',
+    meta: {  
+      roles:['admin','user']  
+    },
+    component: (resolve) => require(['../components/home.vue'], resolve), 
+    children: [
+      {
+        icon: "el-icon-document",
+        title: "订单管理",
+        path: '/a',
+        name: 'A',
+        meta: {  
+          roles:['admin']  
+        },
+        component: (resolve) => require(['../components/a.vue'], resolve),
+        children:[
+          {
+            path: '/text',
+            name: 'Text',
+            meta: {  
+              roles:['admin','user']  
+            },
+            // component: (resolve) => require(['../components/text.vue'], resolve),
+            component:Text,
+      
+          },
+        ]
+      },
+      {
+        path: '/b',
+        name: 'B',
+        icon: "el-icon-dish",
+        title: "菜单管理",
+        meta: {  
+          roles:['admin','user']  
+        },
+        component: (resolve) => require(['../components/b.vue'], resolve)
+      },
+    ]
+  },
+
+]

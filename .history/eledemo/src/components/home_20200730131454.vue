@@ -32,6 +32,7 @@
           </el-col>
           <el-col :span="3">
             <div class="grid-content">
+                 {{this.$store.state.navList}}
               <div class="main-head-img">
                 <img style="width:50px;height:50px" src="../assets/img/33.png" alt />
               </div>

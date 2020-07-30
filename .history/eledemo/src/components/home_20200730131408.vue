@@ -1,8 +1,8 @@
 <template>
   <el-container style="height:100%">
     <el-aside :width="colwidth">
-   
-   
+           {{navList}} 
+      {{this.$store.state.navList}}
       <Slider :isCollapse="isCollapse" :navList="this.$store.state.navList" @adda="adda($event)" @addtab="addtab($event)" />
     </el-aside>
     <el-main style="padding:1px">

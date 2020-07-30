@@ -110,6 +110,7 @@ export default {
       //$route.matched一个数组 包含当前路由的所有嵌套路径片段的路由记录
       let matched = this.$route.matched.filter((item) => item.name);
       this.levelList = matched;
+      console.log(this.levelList);
     },
     checktrue() {
       this.isCollapse = !this.isCollapse;

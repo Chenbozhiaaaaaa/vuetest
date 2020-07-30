@@ -14,6 +14,7 @@
       router
       :default-active="$route.path"
     >
+        {{item}}
       <component
         class="menu-item"
         v-if="!item.hidden"
@@ -23,7 +24,7 @@
       >     
         <template slot="title" >
           <i :class="[item.icon]"></i>
-          <span>{{item.title}}</span>
+          <span>{{item.name}}</span>
         </template>
         <template v-if="item.children&&item.children.length>0">
           <el-menu-item
@@ -33,7 +34,7 @@
             :index="v.path"
           >
             <i :class="[v.icon]"></i>
-            <span slot="title">{{v.title}}</span>
+            <span slot="title">{{v.name}}</span>
           </el-menu-item>
         </template>
       </component>

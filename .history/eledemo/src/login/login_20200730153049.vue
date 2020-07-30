@@ -75,8 +75,8 @@ export default {
         }
         let DR = []
         //  DR[0] = JSON.parse(JSON.stringify(dynamicRouter[0]))
-          DR[0] = this.$store.state.dynamicRouter[0]
-         console.log(this.$store.state.dynamicRouter[0]);
+          DR[0] = dynamicRouter[0]
+         console.log(dynamicRouter[0]);
          console.log(DR[0]);
         DR[0].children = dR
         DR.push({

@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex);
 import { getToken, setToken, removeToken } from '@/utils/auth'
-import { getRouter } from '@/utils/getrouter'
 
 export const store = new Vuex.Store({
   // modules:{
@@ -14,8 +13,7 @@ export const store = new Vuex.Store({
     token: getToken(),
     oldtime:'',
     ismenu:false,
-    navList:[],
-    dynamicRouter:getRouter()
+    navList:[]
   },
   mutations: {
     increment(state, num = 1) {
@@ -26,7 +24,6 @@ export const store = new Vuex.Store({
     },
     setnavList(state,n){
       state.navList = n
-      console.log(n);
       console.log('navlist', state.navList);
     },
     // 时间戳设置token过期时间
