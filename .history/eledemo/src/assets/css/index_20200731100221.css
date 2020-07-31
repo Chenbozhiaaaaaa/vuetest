@@ -6,12 +6,9 @@ html, body, #app,.el-container{
      padding: 0; 
  }
  .el-main{
-     display: flex!important;
+     display: flex;
      flex-direction: column;
  }
  .main-view{
      flex: 1;
- }
- .main-view>div{
-     height: 100%;
  }

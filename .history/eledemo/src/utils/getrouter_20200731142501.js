@@ -1,7 +1,3 @@
-
-// import Layout from '../views/layout/Layout'
-import Pubdemo from '@/components/mapd'
-
 export function getRouter() {
  
     // 模拟后台来的数据  
@@ -23,8 +19,7 @@ export function getRouter() {
             meta: {  
               roles:['admin']  
             },
-            component: (resolve) => require(['../components/mapd.vue'], resolve),
-            // component: Pubdemo,
+            component: (resolve) => require(['../components/a.vue'], resolve),
             children:[
               {
                 path: '/text',
@@ -45,9 +40,7 @@ export function getRouter() {
             meta: {  
               roles:['admin','user']  
             },
-            component: (resolve) => require(['../components/mapd.vue'], resolve),
-
-            // component: Pubdemo,  
+            component: (resolve) => require(['../components/mapd.vue'], resolve),  
             children:[
               {
                 path: '/map',
@@ -70,8 +63,6 @@ export function getRouter() {
               roles:['admin','user']  
             },       
             // component: (resolve) => require(['../components/b.vue'], resolve),
-            component: (resolve) => require(['../components/mapd.vue'], resolve),
-
             children:[
               {
                 path: '/d',

@@ -70,8 +70,7 @@ export function getRouter() {
               roles:['admin','user']  
             },       
             // component: (resolve) => require(['../components/b.vue'], resolve),
-            component: (resolve) => require(['../components/mapd.vue'], resolve),
-
+            component:  (resolve) => require(['../components/home.vue'], resolve),
             children:[
               {
                 path: '/d',

@@ -1,7 +1,3 @@
-
-// import Layout from '../views/layout/Layout'
-import Pubdemo from '@/components/mapd'
-
 export function getRouter() {
  
     // 模拟后台来的数据  
@@ -23,8 +19,7 @@ export function getRouter() {
             meta: {  
               roles:['admin']  
             },
-            component: (resolve) => require(['../components/mapd.vue'], resolve),
-            // component: Pubdemo,
+          
             children:[
               {
                 path: '/text',
@@ -38,52 +33,14 @@ export function getRouter() {
             ]
           },
           {
-            path: '/mapd',
-            name: 'Mapd',
-            icon: "el-icon-dish",
-            title: "百度地图",
-            meta: {  
-              roles:['admin','user']  
-            },
-            component: (resolve) => require(['../components/mapd.vue'], resolve),
-
-            // component: Pubdemo,  
-            children:[
-              {
-                path: '/map',
-                name: 'Map',
-                title: "普通地图",
-                meta: {  
-                  roles:['admin','user']  
-                },
-              component: (resolve) => require(['../components/map.vue'], resolve),  
-               
-              },
-            ]    
-          },
-          {
             path: '/b',
             name: 'B',
             icon: "el-icon-dish",
             title: "菜单管理",
             meta: {  
               roles:['admin','user']  
-            },       
-            // component: (resolve) => require(['../components/b.vue'], resolve),
-            component: (resolve) => require(['../components/mapd.vue'], resolve),
-
-            children:[
-              {
-                path: '/d',
-                name: 'd',
-                title: "d",
-                meta: {  
-                  roles:['admin','user']  
-                },
-              component: (resolve) => require(['../components/d.vue'], resolve),  
-               
-              },
-            ]  
+            },
+            component: (resolve) => require(['../components/b.vue'], resolve)
           },    
             
           {
@@ -96,7 +53,28 @@ export function getRouter() {
             },
             component: (resolve) => require(['../components/c.vue'], resolve)
           },  
-    
+          {
+            path: '/map',
+            name: 'Map',
+            icon: "el-icon-dish",
+            title: "百度地图",
+            meta: {  
+              roles:['admin','user']  
+            },
+            component: (resolve) => require(['../components/map.vue'], resolve),  
+            // children:[
+            //   {
+            //     path: '/mapa',
+            //     name: 'Mapa',
+            //     title: "普通地图",
+            //     meta: {  
+            //       roles:['admin','user']  
+            //     },
+               
+            //   },
+            // ]
+            
+          },
         ]
       },)
 

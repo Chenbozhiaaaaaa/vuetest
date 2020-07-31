@@ -38,13 +38,12 @@ export default {
       ) {
         setToken(this.ruleForm);
         let dR = new Array(); //创建一个数组用来存储符合权限的路由
-        
+        let dRchild = new Array();
         // let childdynamicRouter =JSON.parse(JSON.stringify(dynamicRouter[0].children)) 
        let childdynamicRouter = this.$store.state.dynamicRouter[0].children
        console.log('childdynamicRouter',childdynamicRouter);
         for (let i = 0; i < childdynamicRouter.length; i++) {
           //第一层循环遍历动态路由表的每一个路由
-          let dRchild = new Array();
           for (let j = 0; j < childdynamicRouter[i].meta.roles.length; j++) {
             //第二次循环遍历每一个路由里的roles设置的权限并和当前登录账号的权限比较
             if (childdynamicRouter[i].meta.roles[j] == this.ruleForm.name) {
@@ -60,7 +59,7 @@ export default {
                   }
                 }
                childdynamicRouter[i].children = dRchild;
-
+               
               }
               
       
