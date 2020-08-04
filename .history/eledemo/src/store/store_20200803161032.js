@@ -26,6 +26,8 @@ export const store = new Vuex.Store({
     },
     setnavList(state,n){
       state.navList = n
+      console.log(n);
+      console.log('navlist', state.navList);
     },
     // 时间戳设置token过期时间
     romeroken(state) {

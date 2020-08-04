@@ -29,6 +29,7 @@ export default {
       },
     };
   },
+
   methods: {
     submitForm() {
       if (
@@ -36,7 +37,6 @@ export default {
         this.ruleForm.pass == "111111"
       ) {
         setToken(this.ruleForm);
-        this.$store.commit('gettoken',getToken())
         let dR = new Array(); //创建一个数组用来存储符合权限的路由       
         // let childdynamicRouter =JSON.parse(JSON.stringify(dynamicRouter[0].children)) 
        let childdynamicRouter = this.$store.state.dynamicRouter[0].children
@@ -71,7 +71,6 @@ export default {
           hidden: true,
           //所有不匹配路径(*)都重定向到404，为什么写在这里而不放到静态路由表里可以百度
         });
-  
         this.$router.addRoutes(DR);
         this.$router.options.routes = this.$router.options.routes.concat(DR);   
         this.$store.commit("getoldtime");

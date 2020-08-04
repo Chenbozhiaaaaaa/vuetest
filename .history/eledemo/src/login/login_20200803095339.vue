@@ -29,6 +29,7 @@ export default {
       },
     };
   },
+
   methods: {
     submitForm() {
       if (
@@ -36,8 +37,8 @@ export default {
         this.ruleForm.pass == "111111"
       ) {
         setToken(this.ruleForm);
-        this.$store.commit('gettoken',getToken())
-        let dR = new Array(); //创建一个数组用来存储符合权限的路由       
+        let dR = new Array(); //创建一个数组用来存储符合权限的路由
+        
         // let childdynamicRouter =JSON.parse(JSON.stringify(dynamicRouter[0].children)) 
        let childdynamicRouter = this.$store.state.dynamicRouter[0].children
         for (let i = 0; i < childdynamicRouter.length; i++) {
@@ -49,6 +50,7 @@ export default {
               //这里因为我默认账号名就是当前用户的权限
               //做一个嵌套的判断
               if (childdynamicRouter[i].children) {
+
                 for (let z = 0; z < childdynamicRouter[i].children.length; z++) {
                   for (let y = 0;y < childdynamicRouter[i].children[z].meta.roles.length;y++) {
                     if (childdynamicRouter[i].children[z].meta.roles[y] == this.ruleForm.name) {
@@ -57,13 +59,20 @@ export default {
                   }
                 }
                childdynamicRouter[i].children = dRchild;
-              }     
+
+              }
+              
+      
               dR.push(childdynamicRouter[i]); //符合条件的路由信息就放进数组里
+
             }
           }
         }
         let DR = []
-        DR[0] = this.$store.state.dynamicRouter[0]
+        //  DR[0] = JSON.parse(JSON.stringify(dynamicRouter[0]))
+          DR[0] = this.$store.state.dynamicRouter[0]
+         console.log(this.$store.state.dynamicRouter[0]);
+         console.log(DR[0]);
         DR[0].children = dR
         DR.push({
           path: "*",
@@ -71,12 +80,14 @@ export default {
           hidden: true,
           //所有不匹配路径(*)都重定向到404，为什么写在这里而不放到静态路由表里可以百度
         });
-  
         this.$router.addRoutes(DR);
-        this.$router.options.routes = this.$router.options.routes.concat(DR);   
+        this.$router.options.routes = this.$router.options.routes.concat(DR);
+
+   
         this.$store.commit("getoldtime");
         // 直接把home路由传进去 感觉会有点问题
-        this.$store.commit("setnavList", this.$router.options.routes[3].children);          
+        this.$store.commit("setnavList", this.$router.options.routes[3].children);
+            console.log(this.$router.options.routes[3].children);
        this.$router.push("/home");
       } else {
         this.$message.error("告诉你了都，还错！！！");

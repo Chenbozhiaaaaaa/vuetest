@@ -53,7 +53,7 @@ export function getRouter() {
                 meta: {  
                   roles:['admin','user']  
                 },
-              component: (resolve) => require(['../components/map/map.vue'], resolve),  
+              component: (resolve) => require(['../components/map.vue'], resolve),  
                
               },  
                {

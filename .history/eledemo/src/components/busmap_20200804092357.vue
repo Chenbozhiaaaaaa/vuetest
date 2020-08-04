@@ -1,0 +1,63 @@
+<!--  -->
+<template>
+  <div>
+    <div id="allmap"></div>
+    <div id="driving_way">
+      <select>
+        <option value="0">最少时间</option>
+        <option value="1">最短距离</option>
+        <option value="2">避开高速</option>
+      </select>
+      <input type="button" id="result" value="查询" />
+    </div>
+    <div id="r-result"></div>
+  </div>
+</template>
+<script src="http://api.map.baidu.com/getscript?type=quick&file=api&ak=RsfpQl3VcvP6H6Mb5polcSls2dFSBYxU&t=20200109092002"></script>
+<script src="http://api.map.baidu.com/getscript?type=quick&file=feature&ak=RsfpQl3VcvP6H6Mb5polcSls2dFSBYxU&t=20200109092002"></script>  
+<script>
+
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    busmap() {
+      var map = new BMap.Map("allmap");
+      var start = "天安门";
+      var end = "百度大厦";
+      map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+      //三种驾车策略：最少时间，最短距离，避开高速
+      var routePolicy = [
+        BMAP_DRIVING_POLICY_LEAST_TIME,
+        BMAP_DRIVING_POLICY_LEAST_DISTANCE,
+        BMAP_DRIVING_POLICY_AVOID_HIGHWAYS,
+      ];
+      $("#result").click(function () {
+        map.clearOverlays();
+        var i = $("#driving_way select").val();
+        search(start, end, routePolicy[i]);
+        function search(start, end, route) {
+          var driving = new BMap.DrivingRoute(map, {
+            renderOptions: { map: map, autoViewport: true },
+            policy: route,
+          });
+          driving.search(start, end);
+        }
+      });
+    },
+  },
+  mounted() {
+        this.$nextTick(() => {
+      const _this = this
+ _this.busmap()
+    })
+    //   this.busmap()
+  },
+};
+</script>
+<style  scoped>
+		body, html {width: 100%;height: 100%; margin:0;font-family:"微软雅黑";}
+		#allmap{height:500px;width:100%;}
+		#r-result,#r-result table{width:100%;}
+</style>

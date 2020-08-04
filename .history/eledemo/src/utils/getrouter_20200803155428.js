@@ -1,7 +1,10 @@
 
-    // 模拟后台来的数据  
+// import Layout from '../views/layout/Layout'
+import Pubdemo from '@/components/mapd'
+
 export function getRouter() {
  
+    // 模拟后台来的数据  
      return new Array(     {  
         path: '/home',
         icon: "el-icon-document",
@@ -53,27 +56,16 @@ export function getRouter() {
                 meta: {  
                   roles:['admin','user']  
                 },
-              component: (resolve) => require(['../components/map/map.vue'], resolve),  
+              component: (resolve) => require(['../components/map.vue'], resolve),  
                
-              },  
-               {
+              },   {
                 path: '/busmap',
                 name: 'Busmap',
-                title: "驾车地图",
+                title: "普通地图",
                 meta: {  
                   roles:['admin','user']  
                 },
-              component: (resolve) => require(['../components/map/busmap.vue'], resolve),  
-               
-              },
-              {
-                path: '/iconmap',
-                name: 'iconmap',
-                title: "地图图标",
-                meta: {  
-                  roles:['admin','user']  
-                },
-              component: (resolve) => require(['../components/map/iconmap.vue'], resolve),  
+              component: (resolve) => require(['../components/busmap.vue'], resolve),  
                
               },
             ]    

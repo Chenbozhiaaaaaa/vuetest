@@ -4,7 +4,7 @@ import { getToken } from '@/utils/auth'
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
-  let token = store.state.token
+  let token = getToken()
   if (to.name !== 'Login' && !token) {
     next({ name: 'Login' })
   }

@@ -36,7 +36,6 @@ export default {
         this.ruleForm.pass == "111111"
       ) {
         setToken(this.ruleForm);
-        this.$store.commit('gettoken',getToken())
         let dR = new Array(); //创建一个数组用来存储符合权限的路由       
         // let childdynamicRouter =JSON.parse(JSON.stringify(dynamicRouter[0].children)) 
        let childdynamicRouter = this.$store.state.dynamicRouter[0].children

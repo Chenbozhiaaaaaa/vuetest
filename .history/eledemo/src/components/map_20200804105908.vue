@@ -4,8 +4,10 @@
     <div id="container"></div>
   
 </template>
-
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=RsfpQl3VcvP6H6Mb5polcSls2dFSBYxU">
+</script>
 <script>
+
 export default {
   data() {
     return {};

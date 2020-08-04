@@ -43,6 +43,10 @@
 export default {
   data() {
     return {
+      // leftMenu: {
+      //   isCollapse: false,
+      //   navList: []
+      // }
     };
   },
   name: "Slider",
@@ -55,10 +59,20 @@ export default {
     },
   },
   methods: {
+    // adda(index, title) {
+    //   this.$emit("adda", { index, title });
+    //   console.log(1);
+    // },
     addtab(title, url, item) {
       this.$emit("addtab", { title, url, item });
     },
+    // watchjj(){
+    //   console.log(navList);
+    // }
   },
+  // mounted() {
+  //  this.watchjj()
+  // },
 };
 </script>
 <style >

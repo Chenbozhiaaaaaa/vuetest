@@ -43,6 +43,10 @@
 export default {
   data() {
     return {
+      // leftMenu: {
+      //   isCollapse: false,
+      //   navList: []
+      // }
     };
   },
   name: "Slider",
