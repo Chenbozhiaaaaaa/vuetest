@@ -30,7 +30,7 @@ export function getRouter() {
             meta: {
               roles: ['admin', 'user']
             },
-            component: (resolve) => require(['../components/orderlist/text.vue'], resolve),
+            component: (resolve) => require(['../components/text.vue'], resolve),
           },   
           {
             path: '/a',

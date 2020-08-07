@@ -11,13 +11,15 @@
       unique-opened
       router
       :default-active="$route.path"
+        @select="addtab()"
+
     >
       <component
         class="menu-item"
         v-if="!item.hidden"
         :is="(item.children&&item.children.length>0)?'el-submenu':'el-menu-item'"
         :index="item.path"
-        @click="addtab(item.name,item.path,item)"
+      
       >     
         <template slot="title" >
           <i :class="[item.icon]"></i>
@@ -29,7 +31,6 @@
             v-for="(v,i) in item.children"
             :key="v.path+i"
             :index="v.path"
-             @click="addtab(v.name,v.path,v)"
           >
             <i :class="[v.icon]"></i>
             <span slot="title">{{v.title}}</span>
@@ -56,8 +57,8 @@ export default {
     },
   },
   methods: {
-    addtab(title, url, item) {
-      this.$emit("addtab", { title, url, item });
+    addtab(key, keyPath) {
+      this.$emit("addtab",{key, keyPath});
     },
   },
 };

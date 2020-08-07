@@ -11,6 +11,8 @@
       unique-opened
       router
       :default-active="$route.path"
+        @select="addtab(item.name,item.path,item)"
+
     >
       <component
         class="menu-item"
@@ -29,7 +31,6 @@
             v-for="(v,i) in item.children"
             :key="v.path+i"
             :index="v.path"
-             @click="addtab(v.name,v.path,v)"
           >
             <i :class="[v.icon]"></i>
             <span slot="title">{{v.title}}</span>

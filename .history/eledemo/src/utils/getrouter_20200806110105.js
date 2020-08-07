@@ -15,7 +15,7 @@ export function getRouter() {
       {
         icon: "el-icon-document",
         title: "订单管理",
-        path: '/routerview',
+        path: '/a',
         name: 'A',
         meta: {
           roles: ['admin']
@@ -30,25 +30,7 @@ export function getRouter() {
             meta: {
               roles: ['admin', 'user']
             },
-            component: (resolve) => require(['../components/orderlist/text.vue'], resolve),
-          },   
-          {
-            path: '/a',
-            name: 'a',
-            title: "a",
-            meta: {
-              roles: ['admin', 'user']
-            },
-            component: (resolve) => require(['../components/orderlist/a.vue'], resolve),
-          },
-          {
-            path: '/b',
-            name: 'b',
-            title: "b",
-            meta: {
-              roles: ['admin', 'user']
-            },
-            component: (resolve) => require(['../components/orderlist/b.vue'], resolve),
+            component: (resolve) => require(['../components/text.vue'], resolve),
           },
         ]
       },

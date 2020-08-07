@@ -25,6 +25,7 @@
                   :key="item.path"
                 >{{item.name}}</el-breadcrumb-item>
               </el-breadcrumb>
+              
             </div>
           </el-col>
           <el-col :span="3">
@@ -113,6 +114,7 @@ export default {
     },
     addtab($event) {
       // 做一个重复性判定
+      console.log($event);
       let rundata = JSON.parse(JSON.stringify(this.editableTabs));
       var flag;
       rundata.map((item) => {
@@ -152,8 +154,9 @@ export default {
           window.location.href="https://github.com/Chenbozhiaaaaaa/vuetest/tree/master/eledemo"
         }
        else if(key=='3'){
-         this.$store.commit('gettoken',removeToken())    
-          this.$router.push('/login')       
+         
+          this.$router.push('/login') 
+          removeToken()
         }   
          this.$store.commit('changeMenu')
       }

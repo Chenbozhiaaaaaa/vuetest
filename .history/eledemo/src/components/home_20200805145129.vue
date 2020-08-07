@@ -1,7 +1,7 @@
 <template>
   <el-container style="height:100%">
     <el-aside :width="colwidth"> 
-      <Slider :isCollapse="isCollapse" :navList="this.$store.state.navList"  @addtab="addtab($event)" />
+      <Slider :isCollapse="isCollapse" :navList="this.$store.state.navList" @adda="adda($event)" @addtab="addtab" />
     </el-aside>
     <el-main style="padding:1px">
       <div class="main-head">
@@ -25,6 +25,7 @@
                   :key="item.path"
                 >{{item.name}}</el-breadcrumb-item>
               </el-breadcrumb>
+              
             </div>
           </el-col>
           <el-col :span="3">
@@ -111,8 +112,9 @@ export default {
     checktrue() {
       this.isCollapse = !this.isCollapse;
     },
-    addtab($event) {
+    addtab(key,keyPath) {
       // 做一个重复性判定
+      console.log(keyPath);
       let rundata = JSON.parse(JSON.stringify(this.editableTabs));
       var flag;
       rundata.map((item) => {
@@ -147,13 +149,14 @@ export default {
       this.editableTabsValue = activeName;
       this.editableTabs = tabs.filter((tab) => tab.name !== targetName);
     },
-      handleSelect(key, keyPath) { 
+      handleSelect(key, keyPath) {
+    
         if(key=='2'){
           window.location.href="https://github.com/Chenbozhiaaaaaa/vuetest/tree/master/eledemo"
         }
        else if(key=='3'){
-         this.$store.commit('gettoken',removeToken())    
-          this.$router.push('/login')       
+          removeToken()
+          this.$router.push('/login')
         }   
          this.$store.commit('changeMenu')
       }

@@ -29,7 +29,6 @@
             v-for="(v,i) in item.children"
             :key="v.path+i"
             :index="v.path"
-             @click="addtab(v.name,v.path,v)"
           >
             <i :class="[v.icon]"></i>
             <span slot="title">{{v.title}}</span>

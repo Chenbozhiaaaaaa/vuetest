@@ -17,7 +17,7 @@
         v-if="!item.hidden"
         :is="(item.children&&item.children.length>0)?'el-submenu':'el-menu-item'"
         :index="item.path"
-        @click="addtab(item.name,item.path,item)"
+        @select="addtab(item.name,item.path,item)"
       >     
         <template slot="title" >
           <i :class="[item.icon]"></i>
@@ -29,7 +29,6 @@
             v-for="(v,i) in item.children"
             :key="v.path+i"
             :index="v.path"
-             @click="addtab(v.name,v.path,v)"
           >
             <i :class="[v.icon]"></i>
             <span slot="title">{{v.title}}</span>

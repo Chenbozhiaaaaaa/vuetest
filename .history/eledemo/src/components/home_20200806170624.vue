@@ -113,6 +113,7 @@ export default {
     },
     addtab($event) {
       // 做一个重复性判定
+      console.log($event);
       let rundata = JSON.parse(JSON.stringify(this.editableTabs));
       var flag;
       rundata.map((item) => {
